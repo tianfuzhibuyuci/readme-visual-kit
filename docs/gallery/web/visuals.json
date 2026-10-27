@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "project": "Pocket Notes · 口袋笔记",
+  "tagline": "一条笔记，一个浏览器。不注册，不上传。",
+  "diagrams": [
+    {
+      "type": "overview",
+      "title": "写下内容，留在自己的浏览器",
+      "nodes": [
+        {
+          "id": "write",
+          "label": "输入一条笔记",
+          "detail": "在页面文本框中输入内容。",
+          "evidence": [
+            {
+              "path": "index.html",
+              "start": 5,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "id": "save",
+          "label": "点击保存",
+          "detail": "把文本写入当前来源的浏览器本地存储。",
+          "evidence": [
+            {
+              "path": "index.html",
+              "start": 12,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "id": "restore",
+          "label": "下次打开，继续编辑",
+          "detail": "同一来源重新加载时读取笔记；不跨设备同步。",
+          "evidence": [
+            {
+              "path": "index.html",
+              "start": 8,
+              "end": 11
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "architecture",
+      "title": "页面负责交互，浏览器负责保存",
+      "nodes": [
+        {
+          "id": "input",
+          "label": "输入界面",
+          "detail": "文本框、保存按钮和状态提示。",
+          "evidence": [
+            {
+              "path": "index.html",
+              "start": 5,
+              "end": 6
+            }
+          ]
+        },
+        {
+          "id": "handler",
+          "label": "保存事件",
+          "detail": "读取输入内容，处理存储失败。",
+          "evidence": [
+            {
+              "path": "index.html",
+              "start": 12,
+              "end": 14
+            }
+          ]
+        },
+        {
+          "id": "store",
+          "label": "localStorage",
+          "detail": "存储一条字符串；不是服务器数据库。",
+          "evidence": [
+            {
+              "path": "index.html",
+              "start": 10,
+              "end": 13
+            }
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "to": "handler",
+          "from": "input"
+        },
+        {
+          "to": "store",
+          "from": "handler"
+        }
+      ]
+    },
+    {
+      "type": "quickstart",
+      "title": "在本地试写第一条笔记",
+      "nodes": [
+        {
+          "id": "runtime",
+          "label": "准备 Python",
+          "detail": "使用 Python 3 提供静态文件服务。",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 8,
+              "end": 8
+            }
+          ],
+          "command": "python --version"
+        },
+        {
+          "id": "serve",
+          "label": "启动本地服务",
+          "detail": "在 examples/web 目录运行以下命令。",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 9,
+              "end": 9
+            }
+          ],
+          "command": "python -m http.server 8000 --bind 127.0.0.1"
+        },
+        {
+          "id": "open",
+          "label": "打开页面并保存",
+          "detail": "浏览器访问此地址，输入内容，再点击保存笔记。",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 10,
+              "end": 10
+            }
+          ],
+          "command": "http://127.0.0.1:8000"
+        }
+      ]
+    }
+  ]
+}

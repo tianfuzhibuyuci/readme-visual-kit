@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "project": "Text Utils",
+  "tagline": "Two small Python functions. One predictable text pipeline.",
+  "diagrams": [
+    {
+      "type": "overview",
+      "title": "Messy text, predictable output",
+      "nodes": [
+        {
+          "id": "input",
+          "label": "Pass in a string",
+          "detail": "Accept plain text as a Python string.",
+          "evidence": [
+            {
+              "path": "text_utils.py",
+              "start": 4,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "id": "normalize",
+          "label": "Normalize whitespace",
+          "detail": "Collapse whitespace into single spaces.",
+          "evidence": [
+            {
+              "path": "text_utils.py",
+              "start": 4,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "id": "slug",
+          "label": "Make a simple slug",
+          "detail": "Lowercase and replace non-word runs with dashes.",
+          "evidence": [
+            {
+              "path": "text_utils.py",
+              "start": 7,
+              "end": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "architecture",
+      "title": "Standard library, small surface",
+      "nodes": [
+        {
+          "id": "demo",
+          "label": "Your Python code",
+          "detail": "Import helpers directly from text_utils.",
+          "evidence": [
+            {
+              "path": "demo.py",
+              "start": 1,
+              "end": 3
+            }
+          ]
+        },
+        {
+          "id": "slugify",
+          "label": "slugify",
+          "detail": "Compose whitespace normalization and regex replacement.",
+          "evidence": [
+            {
+              "path": "text_utils.py",
+              "start": 7,
+              "end": 8
+            }
+          ]
+        },
+        {
+          "id": "normalize",
+          "label": "normalize_space",
+          "detail": "Use split and join to normalize whitespace.",
+          "evidence": [
+            {
+              "path": "text_utils.py",
+              "start": 4,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "id": "regex",
+          "label": "Python re",
+          "detail": "Use the standard regular expression module.",
+          "evidence": [
+            {
+              "path": "text_utils.py",
+              "start": 2,
+              "end": 8
+            }
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "to": "slugify",
+          "from": "demo"
+        },
+        {
+          "to": "normalize",
+          "from": "slugify"
+        },
+        {
+          "to": "regex",
+          "from": "slugify"
+        }
+      ]
+    },
+    {
+      "type": "quickstart",
+      "title": "Try both helpers, then import",
+      "nodes": [
+        {
+          "id": "runtime",
+          "label": "Check Python",
+          "detail": "Python 3.10 or newer; no dependencies.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 8,
+              "end": 8
+            }
+          ],
+          "command": "python --version"
+        },
+        {
+          "id": "demo",
+          "label": "Run the demonstration",
+          "detail": "From examples/library, print two normalized strings.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 9,
+              "end": 10
+            }
+          ],
+          "command": "python demo.py"
+        },
+        {
+          "id": "import",
+          "label": "Use it in Python",
+          "detail": "Import a helper in your code or interactive session.",
+          "evidence": [
+            {
+              "path": "demo.py",
+              "start": 1,
+              "end": 3
+            }
+          ],
+          "command": "from text_utils import slugify"
+        }
+      ]
+    }
+  ]
+}

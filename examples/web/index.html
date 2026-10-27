@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pocket Notes</title>
+<style>body{font:18px system-ui;max-width:600px;margin:60px auto;padding:20px}textarea{box-sizing:border-box;width:100%;height:200px;font:inherit;padding:15px}button{font:inherit;margin-top:15px;padding:10px}</style>
+<h1>Pocket Notes</h1><label for="note">写一条笔记</label>
+<textarea id="note"></textarea><button id="save">保存笔记</button><p id="status" role="status"></p>
+<script>
+const note = document.querySelector('#note');
+const status = document.querySelector('#status');
+try { note.value = localStorage.getItem('pocket-note') || ''; }
+catch { status.textContent = '浏览器不允许本地存储。'; }
+document.querySelector('#save').addEventListener('click', () => {
+  try { localStorage.setItem('pocket-note', note.value); status.textContent = '已保存到当前浏览器。'; }
+  catch { status.textContent = '保存失败，请检查浏览器存储权限。'; }
+});
+</script></html>

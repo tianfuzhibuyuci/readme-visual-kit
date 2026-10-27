@@ -1,0 +1,10 @@
+{
+  "name": "readme-visual-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Three source-backed README diagrams. Local, editable, zero dependencies.",
+  "license": "MIT",
+  "engines": {"node": ">=22"},
+  "scripts": {"test": "node --test", "demo": "node scripts/cli.mjs render examples/cli/visuals.json --root examples/cli --out demo"}
+}

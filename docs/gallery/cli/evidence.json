@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "notice": "References were checked for file existence and line bounds, not semantic truth. Excerpts may contain private information: review before publishing.",
+  "evidence": [
+    {
+      "diagram": "overview",
+      "node": "read",
+      "path": "main.mjs",
+      "start": 2,
+      "end": 5,
+      "excerpt": "const input = process.argv[2];\nif (!input) { console.error('Usage: node main.mjs file.md'); process.exit(1); }\ntry {\n  const markdown = await readFile(input, 'utf8');"
+    },
+    {
+      "diagram": "overview",
+      "node": "extract",
+      "path": "main.mjs",
+      "start": 6,
+      "end": 7,
+      "excerpt": "  const links = [...markdown.matchAll(/\\[[^\\]]+\\]\\((https?:\\/\\/[^\\s)]+)\\)/g)].map(match => match[1]);\n  const unique = [...new Set(links)];"
+    },
+    {
+      "diagram": "overview",
+      "node": "output",
+      "path": "main.mjs",
+      "start": 8,
+      "end": 8,
+      "excerpt": "  console.log(JSON.stringify(unique, null, 2));"
+    },
+    {
+      "diagram": "architecture",
+      "node": "file",
+      "path": "main.mjs",
+      "start": 2,
+      "end": 5,
+      "excerpt": "const input = process.argv[2];\nif (!input) { console.error('Usage: node main.mjs file.md'); process.exit(1); }\ntry {\n  const markdown = await readFile(input, 'utf8');"
+    },
+    {
+      "diagram": "architecture",
+      "node": "parser",
+      "path": "main.mjs",
+      "start": 6,
+      "end": 7,
+      "excerpt": "  const links = [...markdown.matchAll(/\\[[^\\]]+\\]\\((https?:\\/\\/[^\\s)]+)\\)/g)].map(match => match[1]);\n  const unique = [...new Set(links)];"
+    },
+    {
+      "diagram": "architecture",
+      "node": "stdout",
+      "path": "main.mjs",
+      "start": 8,
+      "end": 8,
+      "excerpt": "  console.log(JSON.stringify(unique, null, 2));"
+    },
+    {
+      "diagram": "quickstart",
+      "node": "runtime",
+      "path": "README.md",
+      "start": 7,
+      "end": 7,
+      "excerpt": "Requires Node.js 22+; no packages to install."
+    },
+    {
+      "diagram": "quickstart",
+      "node": "run",
+      "path": "README.md",
+      "start": 8,
+      "end": 9,
+      "excerpt": "From this fixture directory:\n`node main.mjs sample.md`"
+    },
+    {
+      "diagram": "quickstart",
+      "node": "save",
+      "path": "README.md",
+      "start": 9,
+      "end": 10,
+      "excerpt": "`node main.mjs sample.md`\nThe output is a JSON array printed to standard output."
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "project": "Linklist",
+  "tagline": "Turn a Markdown file into a clean list of links.",
+  "diagrams": [
+    {
+      "type": "overview",
+      "title": "From Markdown to useful links",
+      "nodes": [
+        {
+          "id": "read",
+          "label": "Start with one file",
+          "detail": "Read a Markdown document from disk.",
+          "evidence": [
+            {
+              "path": "main.mjs",
+              "start": 2,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "id": "extract",
+          "label": "Keep the links, skip the noise",
+          "detail": "Extract simple inline HTTP(S) links and remove duplicates.",
+          "evidence": [
+            {
+              "path": "main.mjs",
+              "start": 6,
+              "end": 7
+            }
+          ]
+        },
+        {
+          "id": "output",
+          "label": "Get a portable result",
+          "detail": "Print a JSON array to standard output. No network calls.",
+          "evidence": [
+            {
+              "path": "main.mjs",
+              "start": 8,
+              "end": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "architecture",
+      "title": "Three parts. Nothing hosted.",
+      "nodes": [
+        {
+          "id": "file",
+          "label": "Markdown file",
+          "detail": "A local file supplied as the CLI argument.",
+          "evidence": [
+            {
+              "path": "main.mjs",
+              "start": 2,
+              "end": 5
+            }
+          ]
+        },
+        {
+          "id": "parser",
+          "label": "Link extractor",
+          "detail": "A small regex plus a Set; not a full Markdown parser.",
+          "evidence": [
+            {
+              "path": "main.mjs",
+              "start": 6,
+              "end": 7
+            }
+          ]
+        },
+        {
+          "id": "stdout",
+          "label": "JSON output",
+          "detail": "Write the unique links to stdout.",
+          "evidence": [
+            {
+              "path": "main.mjs",
+              "start": 8,
+              "end": 8
+            }
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "to": "parser",
+          "from": "file"
+        },
+        {
+          "to": "stdout",
+          "from": "parser"
+        }
+      ]
+    },
+    {
+      "type": "quickstart",
+      "title": "Your first result in three steps",
+      "nodes": [
+        {
+          "id": "runtime",
+          "label": "Check the runtime",
+          "detail": "Use Node.js 22 or newer.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 7,
+              "end": 7
+            }
+          ],
+          "command": "node --version"
+        },
+        {
+          "id": "run",
+          "label": "Run the sample",
+          "detail": "From examples/cli, read the included Markdown file.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 8,
+              "end": 9
+            }
+          ],
+          "command": "node main.mjs sample.md"
+        },
+        {
+          "id": "save",
+          "label": "Save the result",
+          "detail": "Redirect the printed JSON to a new file.",
+          "evidence": [
+            {
+              "path": "README.md",
+              "start": 9,
+              "end": 10
+            }
+          ],
+          "command": "node main.mjs sample.md > links.json"
+        }
+      ]
+    }
+  ]
+}

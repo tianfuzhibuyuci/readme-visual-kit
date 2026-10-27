@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "notice": "References were checked for file existence and line bounds, not semantic truth. Excerpts may contain private information: review before publishing.",
+  "evidence": [
+    {
+      "diagram": "overview",
+      "node": "write",
+      "path": "index.html",
+      "start": 5,
+      "end": 6,
+      "excerpt": "<h1>Pocket Notes</h1><label for=\"note\">写一条笔记</label>\n<textarea id=\"note\"></textarea><button id=\"save\">保存笔记</button><p id=\"status\" role=\"status\"></p>"
+    },
+    {
+      "diagram": "overview",
+      "node": "save",
+      "path": "index.html",
+      "start": 12,
+      "end": 14,
+      "excerpt": "document.querySelector('#save').addEventListener('click', () => {\n  try { localStorage.setItem('pocket-note', note.value); status.textContent = '已保存到当前浏览器。'; }\n  catch { status.textContent = '保存失败，请检查浏览器存储权限。'; }"
+    },
+    {
+      "diagram": "overview",
+      "node": "restore",
+      "path": "index.html",
+      "start": 8,
+      "end": 11,
+      "excerpt": "const note = document.querySelector('#note');\nconst status = document.querySelector('#status');\ntry { note.value = localStorage.getItem('pocket-note') || ''; }\ncatch { status.textContent = '浏览器不允许本地存储。'; }"
+    },
+    {
+      "diagram": "architecture",
+      "node": "input",
+      "path": "index.html",
+      "start": 5,
+      "end": 6,
+      "excerpt": "<h1>Pocket Notes</h1><label for=\"note\">写一条笔记</label>\n<textarea id=\"note\"></textarea><button id=\"save\">保存笔记</button><p id=\"status\" role=\"status\"></p>"
+    },
+    {
+      "diagram": "architecture",
+      "node": "handler",
+      "path": "index.html",
+      "start": 12,
+      "end": 14,
+      "excerpt": "document.querySelector('#save').addEventListener('click', () => {\n  try { localStorage.setItem('pocket-note', note.value); status.textContent = '已保存到当前浏览器。'; }\n  catch { status.textContent = '保存失败，请检查浏览器存储权限。'; }"
+    },
+    {
+      "diagram": "architecture",
+      "node": "store",
+      "path": "index.html",
+      "start": 10,
+      "end": 13,
+      "excerpt": "try { note.value = localStorage.getItem('pocket-note') || ''; }\ncatch { status.textContent = '浏览器不允许本地存储。'; }\ndocument.querySelector('#save').addEventListener('click', () => {\n  try { localStorage.setItem('pocket-note', note.value); status.textContent = '已保存到当前浏览器。'; }"
+    },
+    {
+      "diagram": "quickstart",
+      "node": "runtime",
+      "path": "README.md",
+      "start": 8,
+      "end": 8,
+      "excerpt": "需要 Python 3，用于启动本地静态文件服务。"
+    },
+    {
+      "diagram": "quickstart",
+      "node": "serve",
+      "path": "README.md",
+      "start": 9,
+      "end": 9,
+      "excerpt": "在本示例目录运行：`python -m http.server 8000 --bind 127.0.0.1`"
+    },
+    {
+      "diagram": "quickstart",
+      "node": "open",
+      "path": "README.md",
+      "start": 10,
+      "end": 10,
+      "excerpt": "打开 `http://127.0.0.1:8000`，输入文字，然后点击“保存笔记”。"
+    }
+  ]
+}

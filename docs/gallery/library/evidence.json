@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "notice": "References were checked for file existence and line bounds, not semantic truth. Excerpts may contain private information: review before publishing.",
+  "evidence": [
+    {
+      "diagram": "overview",
+      "node": "input",
+      "path": "text_utils.py",
+      "start": 4,
+      "end": 5,
+      "excerpt": "def normalize_space(text: str) -> str:\n    return \" \".join(text.split())"
+    },
+    {
+      "diagram": "overview",
+      "node": "normalize",
+      "path": "text_utils.py",
+      "start": 4,
+      "end": 5,
+      "excerpt": "def normalize_space(text: str) -> str:\n    return \" \".join(text.split())"
+    },
+    {
+      "diagram": "overview",
+      "node": "slug",
+      "path": "text_utils.py",
+      "start": 7,
+      "end": 8,
+      "excerpt": "def slugify(text: str) -> str:\n    return re.sub(r\"[^\\w]+\", \"-\", normalize_space(text).lower(), flags=re.UNICODE).strip(\"-\")"
+    },
+    {
+      "diagram": "architecture",
+      "node": "demo",
+      "path": "demo.py",
+      "start": 1,
+      "end": 3,
+      "excerpt": "from text_utils import normalize_space, slugify\nprint(normalize_space(\"  hello   world  \"))\nprint(slugify(\" Hello World! \"))"
+    },
+    {
+      "diagram": "architecture",
+      "node": "slugify",
+      "path": "text_utils.py",
+      "start": 7,
+      "end": 8,
+      "excerpt": "def slugify(text: str) -> str:\n    return re.sub(r\"[^\\w]+\", \"-\", normalize_space(text).lower(), flags=re.UNICODE).strip(\"-\")"
+    },
+    {
+      "diagram": "architecture",
+      "node": "normalize",
+      "path": "text_utils.py",
+      "start": 4,
+      "end": 5,
+      "excerpt": "def normalize_space(text: str) -> str:\n    return \" \".join(text.split())"
+    },
+    {
+      "diagram": "architecture",
+      "node": "regex",
+      "path": "text_utils.py",
+      "start": 2,
+      "end": 8,
+      "excerpt": "import re\n\ndef normalize_space(text: str) -> str:\n    return \" \".join(text.split())\n\ndef slugify(text: str) -> str:\n    return re.sub(r\"[^\\w]+\", \"-\", normalize_space(text).lower(), flags=re.UNICODE).strip(\"-\")"
+    },
+    {
+      "diagram": "quickstart",
+      "node": "runtime",
+      "path": "README.md",
+      "start": 8,
+      "end": 8,
+      "excerpt": "Requires Python 3.10+; no installation dependencies."
+    },
+    {
+      "diagram": "quickstart",
+      "node": "demo",
+      "path": "README.md",
+      "start": 9,
+      "end": 10,
+      "excerpt": "From this directory, run `python demo.py`.\nThe first output is `hello world`; the second is `hello-world`."
+    },
+    {
+      "diagram": "quickstart",
+      "node": "import",
+      "path": "demo.py",
+      "start": 1,
+      "end": 3,
+      "excerpt": "from text_utils import normalize_space, slugify\nprint(normalize_space(\"  hello   world  \"))\nprint(slugify(\" Hello World! \"))"
+    }
+  ]
+}
