@@ -4,7 +4,7 @@
 
 Turn source-referenced project notes into three matching diagrams: **how it works, how it fits together, and how to start**. Local SVG renderer + a portable agent skill. No API key. No runtime dependencies.
 
-[中文说明](README.zh-CN.md) · [Live-preview files](docs/gallery/index.html) · [Manifest reference](references/manifest.md)
+[中文说明](README.zh-CN.md) · [Live demo](https://tianfuzhibuyuci.github.io/readme-visual-kit/) · [Manifest reference](references/manifest.md)
 
 ![README Visual Kit preview](docs/preview.png)
 
@@ -27,7 +27,7 @@ node scripts/cli.mjs render examples/cli/visuals.json --root examples/cli --out 
 
 Open `demo/index.html` in your browser. No `npm install`, account, token or build step. If `demo` already exists, choose another output name; the tool will not overwrite it.
 
-**Prefer browsing first?** Open `docs/gallery/index.html` locally to explore all three included examples, in both themes. A GitHub file page does not render this HTML as an app; download it or enable GitHub Pages for `/docs`.
+**Prefer browsing first?** [Try the live gallery](https://tianfuzhibuyuci.github.io/readme-visual-kit/) to explore all three included examples, in both themes. You can also open `docs/gallery/index.html` locally; the renderer and generated previews work offline.
 
 ## What you get
 

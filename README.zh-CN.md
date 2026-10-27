@@ -4,7 +4,7 @@
 
 把带源码依据的项目说明，变成三张统一风格的图：**功能流程、简化架构、快速上手**。本地 SVG 渲染器 + 可携带的 Agent Skill，无需 API Key、无第三方运行依赖。
 
-[English](README.md) · [本地示例画廊](docs/gallery/index.html) · [输入格式](references/manifest.md)
+[English](README.md) · [在线体验](https://tianfuzhibuyuci.github.io/readme-visual-kit/) · [输入格式](references/manifest.md)
 
 ![README Visual Kit preview](docs/preview.png)
 
@@ -27,7 +27,7 @@ node scripts/cli.mjs render examples/cli/visuals.json --root examples/cli --out 
 
 然后双击 `demo/index.html`。不需要 `npm install`、登录或密钥。若 `demo` 已存在，请换一个输出目录名；工具不会覆盖旧目录。
 
-也可以先双击 `docs/gallery/index.html` 查看三个完整示例。GitHub 的文件页面不会直接运行这些 HTML；下载后打开，或将 `/docs` 配置为 GitHub Pages 发布目录。
+也可以先[打开在线画廊](https://tianfuzhibuyuci.github.io/readme-visual-kit/)查看三个完整示例，无需安装。下载后双击 `docs/gallery/index.html` 也能查看；渲染器和生成的预览均支持离线使用。
 
 ## 产出什么
 
