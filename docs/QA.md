@@ -1,6 +1,6 @@
 # v0.1.0 verification record
 
-Date: 2026-10-27. This is a local verification record, not a claim of remote CI or external adoption.
+Date: 2026-10-27. Local and publication verification are recorded separately below. These checks are not evidence of external adoption.
 
 ## Environment
 
@@ -24,11 +24,19 @@ Date: 2026-10-27. This is a local verification record, not a claim of remote CI 
 - Visually reviewed the gallery, Chinese mobile dark preview and a branching library architecture diagram. Fixed English word splitting, wide-glyph overflow and a mobile grid min-width issue during QA.
 - Bundled Skill frontmatter validator: passed. Renderer also worked after being copied into a separate temporary skill-style directory.
 
+## Publication verification
+
+- Published to https://github.com/tianfuzhibuyuci/readme-visual-kit.
+- GitHub Actions run [40511732993](https://github.com/tianfuzhibuyuci/readme-visual-kit/actions/runs/40511732993), commit `0bc215f`: all four Windows/Ubuntu × Node.js 22/24 jobs passed, including 40 tests and three manifest checks per job.
+- Initial Windows CI exposed CRLF checkout differences in generated HTML. A fresh clone with `core.autocrlf=true` reproduced the failure; enforcing LF in `.gitattributes` fixed it. A second fresh clone passed all 40 tests.
+- GitHub Pages root returned HTTP 200 and redirected to the gallery. The Chinese and Python previews loaded their SVGs; the Chinese preview switched to architecture and dark theme, with all three dark SVGs loaded. No whole-page overflow at 390 px width or JavaScript errors were observed during the Chinese preview interaction check.
+- Live gallery: https://tianfuzhibuyuci.github.io/readme-visual-kit/.
+
 ## Not established by these checks
 
 - No real third-party repository adoption, Star growth or external user usability study.
 - No independent agent behavioral evaluation; the Skill is packaged and its helper scripts validated, not proven across all agent clients.
-- No macOS, Linux, Node 22, Firefox, Safari or physical mobile execution in this local session. A Windows/Ubuntu × Node 22/24 CI configuration is included but has not been run on GitHub.
+- No macOS, Firefox, Safari or physical mobile execution. Ubuntu and Node 22 were tested in GitHub CI, not in the local browser session.
 - Source references establish file/line existence, not factual correctness of claims or architecture edges.
 - Font metrics vary. Bounding-box checks are not a guarantee for all fonts, scripts, emoji or every possible graph.
 
