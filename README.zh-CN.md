@@ -4,12 +4,12 @@
 
 把带源码依据的项目说明，变成三张统一风格的图：**功能流程、简化架构、快速上手**。本地 SVG 渲染器 + 可携带的 Agent Skill，无需 API Key、无第三方运行依赖。
 
-[English](README.md) · [在线体验](https://tianfuzhibuyuci.github.io/readme-visual-kit/) · [输入格式](references/manifest.md)
+[English](README.en.md) · [在线体验](https://tianfuzhibuyuci.github.io/readme-visual-kit/) · [输入格式](references/manifest.md)
 
-![README Visual Kit preview](docs/preview.png)
+![README Visual Kit 中文演示预览](docs/preview.png)
 
 <details>
-<summary>See a complete generated SVG / 查看完整生成图</summary>
+<summary>查看完整生成图</summary>
 
 ![中文功能图示例](docs/gallery/web/overview.light.svg)
 
@@ -73,7 +73,7 @@ node scripts/cli.mjs render examples/cli/visuals.json --root examples/cli --out 
 
 - 三类可运行自建示例：Node CLI、中文浏览器应用、Python 工具库。
 - `npm test` 运行内置测试，无需安装依赖；测试覆盖校验、转义、路径安全、可编辑源保留和 CLI。
-- 本次视觉检查见 [QA 记录](docs/QA.md)。CI 配置存在不代表已经在 GitHub 上跑过。
+- Windows／Ubuntu × Node.js 22／24 四组云端测试已通过；详细测试与视觉检查见 [QA 记录](docs/QA.md)。
 - 架构只支持最多六节点的有向无环图；循环需先抽象，复杂图应换更专业的工具。
 - 手机预览可横向滑动；README 内 SVG 会按容器缩放，应尽量使用短标签。
 - 字体来自本机，中文会换行，但复杂文字和 emoji 仍需人工检查。

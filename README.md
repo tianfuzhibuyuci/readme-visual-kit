@@ -1,107 +1,84 @@
 # README Visual Kit
 
-**A README people can understand before they install.**
+**让别人不用安装，就先看懂你的项目。**
 
-Turn source-referenced project notes into three matching diagrams: **how it works, how it fits together, and how to start**. Local SVG renderer + a portable agent skill. No API key. No runtime dependencies.
+把带源码依据的项目说明，变成三张统一风格的图：**功能流程、简化架构、快速上手**。本地 SVG 渲染器 + 可携带的 Agent Skill，无需 API Key、无第三方运行依赖。
 
-[中文说明](README.zh-CN.md) · [Live demo](https://tianfuzhibuyuci.github.io/readme-visual-kit/) · [Manifest reference](references/manifest.md)
+[English](README.en.md) · [在线体验](https://tianfuzhibuyuci.github.io/readme-visual-kit/) · [输入格式](references/manifest.md)
 
-![README Visual Kit preview](docs/preview.png)
+![README Visual Kit 中文演示预览](docs/preview.png)
 
 <details>
-<summary>See a complete generated SVG / 查看完整生成图</summary>
+<summary>查看完整生成图</summary>
 
-![Linklist overview example](docs/gallery/cli/overview.light.svg)
+![中文功能图示例](docs/gallery/web/overview.light.svg)
 
 </details>
 
-> Status: v0.1.0 — a working local MVP, not a hosted service. The examples below are small fixtures created for this repository, not external users or endorsements.
+> v0.1.0 是可运行的本地 MVP，不是在线 AI 服务。三个示例都是为本项目编写的演示程序，不代表第三方用户或真实商业采用。
 
-## Try it in 30 seconds
+## 30 秒试用
 
-Download or clone this repository, open a terminal in its folder, and use **Node.js 22+**:
+下载或克隆本仓库，进入目录，准备 **Node.js 22+**：
 
 ```sh
 node scripts/cli.mjs render examples/cli/visuals.json --root examples/cli --out demo
 ```
 
-Open `demo/index.html` in your browser. No `npm install`, account, token or build step. If `demo` already exists, choose another output name; the tool will not overwrite it.
+然后双击 `demo/index.html`。不需要 `npm install`、登录或密钥。若 `demo` 已存在，请换一个输出目录名；工具不会覆盖旧目录。
 
-**Prefer browsing first?** [Try the live gallery](https://tianfuzhibuyuci.github.io/readme-visual-kit/) to explore all three included examples, in both themes. You can also open `docs/gallery/index.html` locally; the renderer and generated previews work offline.
+也可以先[打开在线画廊](https://tianfuzhibuyuci.github.io/readme-visual-kit/)查看三个完整示例，无需安装。下载后双击 `docs/gallery/index.html` 也能查看；渲染器和生成的预览均支持离线使用。
 
-## What you get
+## 产出什么
 
-| File | Purpose |
-|---|---|
-| `overview.light.svg` + `.dark.svg` | Input → transformation → result |
-| `architecture.light.svg` + `.dark.svg` | A simplified directed component diagram |
-| `quickstart.light.svg` + `.dark.svg` | The shortest path to a first result |
-| `visuals.json` | Editable diagram source |
-| `README-snippet.md` | Copyable theme-aware `<picture>` embeds |
-| `index.html` | Offline preview, tabs, theme switch, downloads and copy button |
-| `evidence.json` | Source file/line references and copied excerpts |
+- **功能流程图**：输入 → 处理 → 输出。
+- **简化架构图**：关键组件及有向关系，不画不存在的数据库和服务。
+- **快速上手图**：从准备环境到第一次跑通。
+- 每张都有明暗两版 SVG，共六张；另含可编辑 JSON、README 嵌入片段、离线预览、来源报告。
+- 预览支持切换图表/主题、下载和复制片段。手机端保持可读字号，横向滑动看图。
 
-On small screens the preview scrolls diagrams horizontally rather than shrinking the text to illegibility. The SVGs themselves scale to fit README containers; use shorter labels for narrow embeds.
+## 和“AI 随便画张图”有什么不同
 
-## Not another “AI draws everything” app
+**范围小、依据明确、可以修改。** 每个节点必须引用项目内真实文件和行号。渲染器检查文件和行范围是否存在，但**不证明描述或连线在语义上正确**；仍需要人或 Agent 审查。
 
-- **Three useful diagrams, not a blank canvas.** A focused README workflow.
-- **Source references, not invented features.** Every node links to a real file and line range. The checker does **not** verify the meaning of claims or edges.
-- **Light and dark together.** Deterministic SVG output with no external font or asset requests.
-- **Your agent, your model.** The skill helps an existing agent prepare the JSON. The CLI does not read an arbitrary repository and magically infer architecture, and it never calls a model API. Existing model usage may still cost money.
-- **Editable and portable.** JSON, SVG and HTML remain yours. No service to keep alive.
+它不提供托管模型，不自动扫描整个仓库推断架构。你现有的 Agent 整理 JSON，本地脚本负责校验与绘图；使用已有模型仍可能产生模型费用。
 
-## Use it on your project
+## 给自己的项目生成
 
-1. Ask your coding agent to follow `SKILL.md` in this repository, or prepare JSON yourself using [the format](references/manifest.md).
-2. Point it at the README and relevant source files. Keep every diagram to 2–6 nodes and verify source references.
-3. Run validation and render. Below, `.` is your current project and `visuals.json` is your prepared manifest; replace the script path with the renderer's actual location:
+1. 让编码助手阅读本仓库根目录 `SKILL.md`，再读取目标项目 README 和相关源码；也可按照 [输入格式](references/manifest.md) 自己写 JSON。
+2. 用 2–6 个节点讲清每张图，不确定的内容写 `uncertainty`，不要编造。
+3. 在目标项目目录里运行（脚本路径替换为你本机的实际路径）：
 
    ```sh
    node /path/to/readme-visual-kit/scripts/cli.mjs check visuals.json --root .
    node /path/to/readme-visual-kit/scripts/cli.mjs render visuals.json --root . --out readme-visuals
    ```
 
-4. Review the preview, particularly architecture arrows and quickstart commands. Open `README-snippet.md`, adjust image paths to `./readme-visuals/`, then copy into your README.
-5. **Check privacy before committing:** source excerpts are included in the preview and evidence report. You may publish only the six SVGs if you do not want to share excerpts.
+4. 打开生成的 `index.html`，检查三张图、两套主题、架构箭头和命令。
+5. 复制 `README-snippet.md` 时，把图片路径前缀改为 `./readme-visuals/`。
 
-Suggested agent prompt:
+可直接给 Agent 的提示：
 
-> Follow the SKILL.md in readme-visual-kit. Use only this repository's README and relevant source files to make overview, architecture and quickstart diagrams. Show uncertainty explicitly, validate evidence, and render into a new readme-visuals folder. Do not run project commands or publish anything.
+> 按照 readme-visual-kit 中的 SKILL.md，为当前项目生成三张 README 图。仅依据 README 和相关源码，每个节点引用文件行号，不确定项明确标注。先校验，再输出到新的 readme-visuals 目录。不要执行项目命令，也不要发布到 GitHub。
 
-The root folder is a self-contained skill: keep `SKILL.md`, `scripts/`, `references/` and the example it references together. An agent can read it directly; optional installation/discovery depends on your client. No global configuration is changed by this project.
+本仓库根目录就是一个完整 Skill。整体保留 `SKILL.md`、`scripts/`、`references/` 和引用到的示例，交给支持读取 Skill 的客户端；不同客户端的安装目录和自动发现方式各异。本工具不会修改你的全局配置。
 
-## Three runnable fixtures
+## 发布前必须注意
 
-| Example | Type | What it demonstrates |
-|---|---|---|
-| [Linklist](examples/cli/) | Node CLI | Markdown → deduplicated links → JSON |
-| [Pocket Notes](examples/web/) | Browser app, Chinese | Input → save → local browser storage |
-| [Text Utils](examples/library/) | Python library | Tiny functions, imports and dependency relationships |
+`evidence.json` 和预览 HTML 包含引用的**源码片段**，可能含私有信息。发布前逐项审查；如果只想公开图，只上传六张 SVG 即可。不要把密钥写进输入 JSON。
 
-The gallery contains pre-rendered outputs for each. Fixture limitations are documented in their own READMEs.
+来源校验不是事实认证，也不会固定到 Git 提交；源码变化后应重新检查。输出目录必须不存在且其父目录已存在。磁盘错误可能留下部分新文件，处理原因后换一个新目录再生成。
 
-## Development
+## 验收与限制
 
-```sh
-npm test
-```
+- 三类可运行自建示例：Node CLI、中文浏览器应用、Python 工具库。
+- `npm test` 运行内置测试，无需安装依赖；测试覆盖校验、转义、路径安全、可编辑源保留和 CLI。
+- Windows／Ubuntu × Node.js 22／24 四组云端测试已通过；详细测试与视觉检查见 [QA 记录](docs/QA.md)。
+- 架构只支持最多六节点的有向无环图；循环需先抽象，复杂图应换更专业的工具。
+- 手机预览可横向滑动；README 内 SVG 会按容器缩放，应尽量使用短标签。
+- 字体来自本机，中文会换行，但复杂文字和 emoji 仍需人工检查。
+- 不是拖拽画布，不提供 SVG 修改反向同步 JSON。
 
-Uses Node's built-in test runner; no third-party runtime or test packages. The CI definition exercises Node 22 and 24 on Windows and Ubuntu. Browser QA performed for this release is recorded in [docs/QA.md](docs/QA.md); a workflow file is not a claim of a successful remote CI run.
+欢迎提供可公开的真实项目示例、Bug 或带测试的改进。如果它帮你省下解释项目的时间，欢迎点一个 Star。不会要求先 Star 才能使用，也不承诺获得特定 Star 数。
 
-## Limits & safety
-
-- This is a **presentation aid**, not a full architecture analyzer. Architecture supports up to six nodes and a DAG; simplify cycles and dense relationships.
-- Validation checks schema, safe local paths and line bounds, not semantic truth. Source references can become stale.
-- Commands are rendered as text, never executed. The CLI makes no network requests.
-- Existing output directories are refused. A disk failure during writing can leave a partial new directory; choose a new directory after addressing the failure.
-- Fonts use the viewer's local system fonts. CJK is supported by wrapping, but font availability varies. Review long labels, complex scripts and emoji visually.
-- SVG edits do not round-trip into JSON. This is not a drag-and-drop editor.
-
-## Contribute
-
-A useful contribution starts with a failing test, a small fix and a before/after image when layout changes. Real examples with permission to share are welcome. Please remove secrets from evidence excerpts before attaching them to issues.
-
-If this saves you time explaining a project, a Star helps others discover it. No star gates, paid stars or fake adoption numbers.
-
-MIT licensed. See [LICENSE](LICENSE).
+MIT 开源许可，见 [LICENSE](LICENSE)。

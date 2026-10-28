@@ -41,3 +41,10 @@ Date: 2026-10-27. Local and publication verification are recorded separately bel
 - Font metrics vary. Bounding-box checks are not a guarantee for all fonts, scripts, emoji or every possible graph.
 
 Screenshots: [desktop gallery](preview.png), [Chinese mobile preview](preview-mobile.png).
+
+
+## Chinese-first presentation update — 2026-10-28 (Asia/Shanghai)
+
+- Default README and gallery introduction are Chinese; English remains available in `README.en.md` and `docs/gallery/index.en.html`.
+- Updated the desktop gallery screenshot and checked Chinese/English navigation, local README links, loaded gallery images and 390 px mobile layout with no whole-page overflow.
+- This is a presentation-only update. Example manifests, renderer output and its 40 tests are unchanged.

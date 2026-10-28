@@ -7,7 +7,7 @@
 ## 仓库建议
 
 - 名称：`readme-visual-kit`（仓库已创建）
-- 描述：Three source-referenced README diagrams. Local SVG renderer + agent skill. No API key.
+- 描述：把带源码依据的项目说明变成三张 README 图：功能流程、简化架构、快速上手。本地 SVG 渲染器 + Agent Skill，无需 API Key。
 - Topics：`readme`、`svg`、`developer-tools`、`agent-skills`、`documentation`、`diagrams`
 - 许可证：MIT，完整文本已包含。
 
@@ -27,7 +27,11 @@
 
 目前带了 CLI、中文网页、Python 库三个自建示例。最想知道的是：你项目的 README 哪一段最难让新人看懂？欢迎拿真实项目试试，告诉我哪里画得不对。
 
-发布时补上**实际**仓库与演示地址，不编造用户数、效果提升或采用案例。
+仓库：https://github.com/tianfuzhibuyuci/readme-visual-kit
+
+在线演示：https://tianfuzhibuyuci.github.io/readme-visual-kit/
+
+不编造用户数、效果提升或采用案例。
 
 ## 争取真实反馈
 
